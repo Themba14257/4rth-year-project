@@ -1,4 +1,5 @@
-﻿using Devop.Models;
+﻿using Devop.Data;
+using Devop.Models;
 using Devop.Models.ViewModel;
 using Devop.Models.ViewModel.UserViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -18,10 +19,13 @@ namespace Devop.Controllers
         private IUserValidator<ApplicationUser> userValidator;
         private IPasswordHasher<ApplicationUser> passwordHasher;
         private IPasswordValidator<ApplicationUser> passwordValidator;
+        private readonly DevopContext _context;
 
-        public AdminController(UserManager<ApplicationUser> usrMgr,IUserValidator<ApplicationUser> userValid,
+
+        public AdminController(DevopContext context, UserManager<ApplicationUser> usrMgr,IUserValidator<ApplicationUser> userValid,
             IPasswordValidator<ApplicationUser> passValid,  IPasswordHasher<ApplicationUser> passwordHash)
         {
+            _context = context;
             userManager = usrMgr;
             userValidator = userValid;
             passwordValidator = passValid;
@@ -38,7 +42,7 @@ namespace Devop.Controllers
             {
                 ApplicationUser user = new ApplicationUser
                 {
-                    UserName = model.Name,
+                    UserName = model.FirstName,
                     Email = model.Email
                 };
 
@@ -99,15 +103,13 @@ namespace Devop.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, string email,
-        string password)
+        public async Task<IActionResult> Edit(string id, string email, string password)
         {
             ApplicationUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
                 user.Email = email;
-                IdentityResult validEmail
-                = await userValidator.ValidateAsync(userManager, user);
+                IdentityResult validEmail = await userValidator.ValidateAsync(userManager, user);
                 if (!validEmail.Succeeded)
                 {
                     AddErrorsFromResult(validEmail);
@@ -127,9 +129,7 @@ namespace Devop.Controllers
                         AddErrorsFromResult(validPass);
                     }
                 }
-                if ((validEmail.Succeeded && validPass == null)
-                || (validEmail.Succeeded
-               && password != string.Empty && validPass.Succeeded))
+                if ((validEmail.Succeeded && validPass == null)  || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
                 {
                     IdentityResult result = await userManager.UpdateAsync(user);
                     if (result.Succeeded)

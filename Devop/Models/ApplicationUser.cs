@@ -77,11 +77,7 @@ namespace Devop.Models
             }
         }
 
-        public City city { get; set; }
+        public virtual City City { get; set; }
 
-
-
-
-        //  public Cities City { get; set; }
     }
 }

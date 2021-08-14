@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Devop.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Added : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,9 +25,8 @@ namespace Devop.Migrations
                 name: "tblSuburb",
                 columns: table => new
                 {
-                    SuburbId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValueSql: "(newid())"),
-                    SuburbName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CityId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    SuburbId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    SuburbName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,7 +58,7 @@ namespace Devop.Migrations
                 name: "tblCity",
                 columns: table => new
                 {
-                    CityId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValueSql: "(newid())"),
+                    CityId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CityName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     SuburbId = table.Column<string>(type: "nvarchar(50)", nullable: true)
                 },

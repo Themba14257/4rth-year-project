@@ -14,10 +14,8 @@ namespace Devop.Models.Content
         [Display(Name = "Suburb")]
         [MinLength(3)]
         public string SuburbName { get; set; }
+        public virtual ICollection<City> City { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please select province name")]
-        public string CityId { get; set; }
 
-        public virtual ICollection<City> Cities { get; set; }
     }
 }

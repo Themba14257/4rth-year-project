@@ -14,6 +14,8 @@ namespace Devop.Models.Content
         [MaxLength(50)]
         [MinLength(3)]
         public string CityName { get; set; }
-       public virtual Suburb Suburb { get; set; }
+        public string SuburbId { get; set; }
+        public virtual Suburb Suburb { get; set; }
+
     }
 }

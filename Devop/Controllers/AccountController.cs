@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Devop.Controllers
 {
 
-    [Authorize]
+   
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> userManager;
@@ -18,6 +18,46 @@ namespace Devop.Controllers
             userManager = userMgr;
             signInManager = signinMgr;
         }
+        //------------------------------
+        public ViewResult Create() => View();
+        [HttpPost]
+
+        public async Task<IActionResult> Create(CreateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    UserName = model.FirstName,
+
+                };
+
+                IdentityResult result = await userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var isSave = await userManager.AddToRoleAsync(user, role: "Patient");
+                    await signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction(nameof(AccountController.Login), "Account");
+
+                   // return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+        /// <summary>
+        /// -----------------------------------
+        /// </summary>
+        /// <returns></returns>
 
         [AllowAnonymous]
         public IActionResult Login(/*string returnUrl*/)

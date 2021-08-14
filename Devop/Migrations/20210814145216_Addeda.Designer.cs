@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Devop.Migrations
 {
     [DbContext(typeof(DevopContext))]
-    [Migration("20210813210221_Initial")]
-    partial class Initial
+    [Migration("20210814145216_Addeda")]
+    partial class Addeda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -126,8 +126,7 @@ namespace Devop.Migrations
                     b.Property<string>("CityId")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasDefaultValueSql("(newid())");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("CityName")
                         .IsRequired()
@@ -149,12 +148,7 @@ namespace Devop.Migrations
                     b.Property<string>("SuburbId")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasDefaultValueSql("(newid())");
-
-                    b.Property<string>("CityId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("SuburbName")
                         .IsRequired()
@@ -164,6 +158,57 @@ namespace Devop.Migrations
                     b.HasKey("SuburbId");
 
                     b.ToTable("tblSuburb");
+                });
+
+            modelBuilder.Entity("Devop.Models.ViewModel.UserViewModels.EditUserModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddressLine1")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("CityId")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Dob")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Idnumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EditUserModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -299,17 +344,17 @@ namespace Devop.Migrations
 
             modelBuilder.Entity("Devop.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Devop.Models.Content.City", "city")
+                    b.HasOne("Devop.Models.Content.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId");
 
-                    b.Navigation("city");
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Devop.Models.Content.City", b =>
                 {
                     b.HasOne("Devop.Models.Content.Suburb", "Suburb")
-                        .WithMany("Cities")
+                        .WithMany("City")
                         .HasForeignKey("SuburbId");
 
                     b.Navigation("Suburb");
@@ -368,7 +413,7 @@ namespace Devop.Migrations
 
             modelBuilder.Entity("Devop.Models.Content.Suburb", b =>
                 {
-                    b.Navigation("Cities");
+                    b.Navigation("City");
                 });
 #pragma warning restore 612, 618
         }

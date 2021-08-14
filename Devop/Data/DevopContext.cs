@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
+using Devop.Models.ViewModel.UserViewModels;
 
 namespace Devop.Data
 {
@@ -23,35 +24,34 @@ namespace Devop.Data
             modelBuilder.Entity<City>(entity =>
             {
                 entity.HasKey(e => e.CityId);
-
-                entity.Property(e => e.CityId).HasMaxLength(50)
-               .HasDefaultValueSql("(newid())");
+                entity.Property(e => e.CityId).HasMaxLength(50);
+                
 
                 entity.ToTable("tblCity");
-
                 entity.Property(e => e.CityId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CityName)
-                                    .IsRequired()
-                                    .HasMaxLength(50);
+                                      .IsRequired()
+                                      .HasMaxLength(50);
 
             });
+
             modelBuilder.Entity<Suburb>(entity =>
             {
                 entity.HasKey(e => e.SuburbId);
-
-                entity.Property(e => e.SuburbId).HasMaxLength(50)
-              .HasDefaultValueSql("(newid())");
+                entity.Property(e => e.SuburbId).HasMaxLength(50);
 
                 entity.ToTable("tblSuburb");
+                entity.Property(e => e.SuburbId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.SuburbName)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                                      .IsRequired()
+                                      .HasMaxLength(50);
+                
 
-         
             });
-            base.OnModelCreating(modelBuilder);
+           
+           base.OnModelCreating(modelBuilder);
         }
 
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,IConfiguration configuration)
@@ -82,6 +82,8 @@ namespace Devop.Data
                 }
             }
         }
+
+        public DbSet<Devop.Models.ViewModel.UserViewModels.EditUserModel> EditUserModel { get; set; }
 
     }
 }
