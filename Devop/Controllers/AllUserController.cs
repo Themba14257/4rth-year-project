@@ -24,7 +24,7 @@ namespace Devop.Controllers
         public IActionResult Index()
             => View(GetData(nameof(Index)));
 
-        [Authorize(Roles = "Users")]
+        [Authorize(Roles = "Patient")]
         public IActionResult OtherAction() 
             => View("Index", GetData(nameof(OtherAction)));
 
@@ -35,7 +35,7 @@ namespace Devop.Controllers
                 ["User"] = HttpContext.User.Identity.Name,
                 ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
                 ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
-                ["In Users Role"] = HttpContext.User.IsInRole("Users"),
+                ["In Users Role"] = HttpContext.User.IsInRole("Patient"),
                // ["City"] = CurrentUser.Result.City,
             };
 

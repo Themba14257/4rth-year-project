@@ -1,0 +1,150 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="CareMed demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+    <!-- font awesome style -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header trans_200">
+
+            <!-- Top Bar -->
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="top_bar_item"><a href="#">FAQ</a></div>
+                                <div class="top_bar_item"><a href="#">Request an Appointment</a></div>
+                                <div class="emergencies  d-flex flex-row align-items-center justify-content-start ml-auto">For Emergencies: +563 47558 623</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Content -->
+            <div class="header_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                                <nav class="main_nav ml-auto">
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                        <li><a href="services.html"></a></li>
+                                        <li><a href="news.html"></a></li>
+                                        <div class="quote_btn-container">
+
+
+
+                                            @if (SignInManager.IsSignedIn(User))
+                                            {
+                                                <a asp-area="Identity" asp-controller="Account" asp-action="Login">
+                                                    <span>
+                                                        Hello @UserManager.GetUserName(User)!
+                                                    </span>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-area="Identity" asp-controller="Account" asp-action="Login">
+                                                    <span>
+                                                        Login
+                                                    </span>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </a>
+                                                <a asp-area="Identity" asp-controller="Account" asp-action="Create">
+                                                    <span>
+                                                        Register
+                                                    </span>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </a>
+                                            }
+
+
+
+
+                                        </div>
+                                    </ul>
+                                </nav>
+                                <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo -->
+            <div class="logo_container_outer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="logo_container">
+                                <a href="#">
+                                    <div class="logo_content d-flex flex-column align-items-start justify-content-center">
+                                        <div class="logo_line"></div>
+                                        <div class="logo d-flex flex-row align-items-center justify-content-center">
+                                            <div class="logo_text">Care<span>Med</span></div>
+                                            <div class="logo_box">+</div>
+                                        </div>
+                                        <div class="logo_sub">Health Care Center</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
