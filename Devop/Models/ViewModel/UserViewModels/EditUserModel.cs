@@ -31,7 +31,7 @@ namespace Devop.Models.ViewModel.UserViewModels
         [PersonalData]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your phone number")]
         public string PhoneNumber { get; set; }
-        public string Title { get; set; }
+      
         [PersonalData]
         public string Gender { get; set; }
         [PersonalData]
@@ -47,5 +47,7 @@ namespace Devop.Models.ViewModel.UserViewModels
         [PersonalData]
         [MaxLength(50)]
         public string SuburbId { get; set; }
+        [PersonalData]
+        public string PostalCode { get; set; }
     }
 }

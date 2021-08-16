@@ -44,7 +44,6 @@ namespace Devop.Controllers
             {
                 nurse.Add(new ViewModelUserRole
                 {
-                    Title = x.Title,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Email = x.Email,
@@ -64,7 +63,6 @@ namespace Devop.Controllers
             {
                 patient.Add(new ViewModelUserRole
                 {
-                    Title = x.Title,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Email = x.Email,
@@ -84,7 +82,6 @@ namespace Devop.Controllers
             {
                 labUser.Add(new ViewModelUserRole
                 {
-                    Title = x.Title,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Email = x.Email,
@@ -146,7 +143,6 @@ namespace Devop.Controllers
                
                 Dob = user.Dob,
                 Email = user.Email,
-                Title = user.Title,
                 Gender = user.Gender,
                 CityId = user.CityId,
                 Idnumber = user.Idnumber,
@@ -175,7 +171,6 @@ namespace Devop.Controllers
             else
             {
                 user.Dob = model.Dob;                
-                user.Title = model.Title;
                 user.Gender = model.Gender;
                 user.CityId = model.CityId;
                 user.Idnumber = model.Idnumber;             

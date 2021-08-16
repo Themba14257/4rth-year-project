@@ -19,6 +19,8 @@ namespace Devop.Data
         }
         public virtual DbSet<City> tblCity { get; set; }
         public virtual DbSet<Suburb> tblSuburb { get; set; }
+        public virtual DbSet<MedicalAid> tblMedicalAid { get; set; }
+        public virtual DbSet<MedicalPlan> tblMedicalPlans { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<City>(entity =>
@@ -50,8 +52,38 @@ namespace Devop.Data
                 
 
             });
-           
-           base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<MedicalAid>(entity =>
+            {
+                entity.HasKey(e => e.MedId);
+                entity.Property(e => e.MedId).HasMaxLength(50);
+
+                entity.ToTable("tblMedicalAid");
+                entity.Property(e => e.MedId).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.MedicalName)
+                                      .IsRequired()
+                                      .HasMaxLength(50);
+
+
+            });
+            modelBuilder.Entity<MedicalPlan>(entity =>
+            {
+                entity.HasKey(e => e.PlanId);
+                entity.Property(e => e.PlanId).HasMaxLength(50);
+
+                entity.ToTable("tblMedicalPlans");
+                entity.Property(e => e.PlanId).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.PlanName)
+                                      .IsRequired()
+                                      .HasMaxLength(50);
+
+
+            });
+
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,IConfiguration configuration)

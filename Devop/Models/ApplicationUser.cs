@@ -27,8 +27,6 @@ namespace Devop.Models
         [MaxLength(50)]
         public string LastName { get; set; }
         [PersonalData]
-        public string Title { get; set; }
-        [PersonalData]
         public string Gender { get; set; }
         [PersonalData]
         [MaxLength(250)]
@@ -43,6 +41,21 @@ namespace Devop.Models
         [PersonalData]
         [MaxLength(50)]
         public string SuburbId { get; set; }
+        public string PostalCode { get; set; }
+
+        [PersonalData]
+        [MaxLength(50)]
+
+        public string MedId { get; set; }
+        [PersonalData]
+        [MaxLength(50)]
+
+        public string  MedicalAidNumber { get; set; }
+        [PersonalData]
+        [MaxLength(50)]
+
+        public string PlanId { get; set; }
+
 
         [Display(Name = "Full Name")]
         public string FullName
@@ -82,6 +95,8 @@ namespace Devop.Models
 
         public virtual City City { get; set; }
         public virtual Suburb Suburb {get; set;}
+        public virtual MedicalAid Medical { get; set; }
+        public virtual MedicalPlan MedicalPlan { get; set; }
 
     }
 }

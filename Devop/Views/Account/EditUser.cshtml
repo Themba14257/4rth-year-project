@@ -3,89 +3,289 @@
 @{
     ViewData["Title"] = "EditUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
-<h1>EditUser</h1>
+@*<h1>EditUser</h1>
 
-<h4>EditUserModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditUser">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Dob" class="control-label"></label>
-                <input asp-for="Dob" class="form-control" />
-                <span asp-validation-for="Dob" class="text-danger"></span>
+    <h4>EditUserModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditUser">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Dob" class="control-label"></label>
+                    <input asp-for="Dob" class="form-control" />
+                    <span asp-validation-for="Dob" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Idnumber" class="control-label"></label>
+                    <input asp-for="Idnumber" class="form-control" />
+                    <span asp-validation-for="Idnumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <input asp-for="Gender" class="form-control" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressLine1" class="control-label"></label>
+                    <input asp-for="AddressLine1" class="form-control" />
+                    <span asp-validation-for="AddressLine1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressLine2" class="control-label"></label>
+                    <input asp-for="AddressLine2" class="form-control" />
+                    <span asp-validation-for="AddressLine2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CityId" class="control-label"></label>
+                    <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">
+                        <option value="" class="option">Select Suburb</option>
+                    </select>
+                    <span asp-validation-for="CityId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SuburbId" class="control-label"></label>
+                    <select asp-for="SuburbId" class="form-control" asp-items="ViewBag.SuburbId">
+                        <option value="" class="option">Select Suburb</option>
+                    </select>
+                    <span asp-validation-for="SuburbId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+<div class="bg-primary m-1 p-1 text-white"><h4>User Registration</h4></div>
+<div class="col-xl-12 order-xl-1">
+    <div class="card">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h3 class="mb-0"> </h3>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Idnumber" class="control-label"></label>
-                <input asp-for="Idnumber" class="form-control" />
-                <span asp-validation-for="Idnumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine1" class="control-label"></label>
-                <input asp-for="AddressLine1" class="form-control" />
-                <span asp-validation-for="AddressLine1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine2" class="control-label"></label>
-                <input asp-for="AddressLine2" class="form-control" />
-                <span asp-validation-for="AddressLine2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CityId" class="control-label"></label>
-                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">
-                    <option value="" class="option">Select Suburb</option>
-                </select>
-                <span asp-validation-for="CityId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SuburbId" class="control-label"></label>
-                <select asp-for="SuburbId" class="form-control" asp-items="ViewBag.SuburbId">
-                    <option value="" class="option">Select Suburb</option>
-                </select>
-                <span asp-validation-for="SuburbId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditUser" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="FirstName">First Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-account-o"></i></div>
+                                    </div>
+                                    <input asp-for="FirstName" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="LastName">Last Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-account-o"></i></div>
+                                    </div>
+                                    <input asp-for="LastName" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="Dob">Date Of Birth</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-calendar"></i></div>
+                                    </div>
+                                    <input asp-for="Dob" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="Idnumber">ID No:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-assignment-account"></i></div>
+                                    </div>
+                                    <input asp-for="Idnumber" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="Gender">Gender</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-male-female"></i></div>
+                                    </div>
+                                    <select asp-for="Gender" class="form-control">
+                                        <option value="" class="option">Select Gender</option>
+                                        <option value="Male" class="option">Male</option>
+                                        <option value="Female" class="option">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <div class="pl-lg-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="Email">Email Address</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-email"></i></div>
+                                    </div>
+                                    <input asp-for="Email" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="PhoneNumber">Phone Number</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-smartphone-android"></i></div>
+                                    </div>
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="AddressLine1">AddressLine1</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-home"></i></div>
+                                    </div>
+                                    <input asp-for="AddressLine1" class="form-control" placeholder="Stress/House Number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="AddressLine2">AddressLine2</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-pin"></i></div>
+                                    </div>
+                                    <input asp-for="AddressLine2" class="form-control" placeholder="Stress Address" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="CityId">City</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-pin"></i></div>
+                                    </div>
+                                    <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">
+                                        <option value="" class="option">Select Province</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="SuburbId">Suburb</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-pin-drop"></i></div>
+                                    </div>
+                                    <select asp-for="SuburbId" class="form-control" asp-items="ViewBag.SuburbId">
+                                        <option value="" class="option">Select City/Suburb</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-control-label" asp-for="PostalCode">Postal Code</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="zmdi zmdi-pin-drop"></i></div>
+                                    </div>
+                                    <input asp-for="PostalCode" class="form-control" placeholder="PsotalCode" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr class="my-4" />
+                <h6 class="heading-small text-muted mb-4">Medical Aid Information</h6>
+                <hr class="my-4" />
+                <div class="pl-lg-4">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            Update Profile
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section scripts{
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+}
+
 

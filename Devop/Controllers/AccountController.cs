@@ -120,6 +120,7 @@ namespace Devop.Controllers
                 AddressLine1 = user.AddressLine1,
                 AddressLine2 = user.AddressLine2,
                 CityId = user.CityId,
+                PostalCode = user.PostalCode,
                 SuburbId = user.SuburbId
 
             };
@@ -164,6 +165,7 @@ namespace Devop.Controllers
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
+
             user.Dob = model.Dob;
             user.Email = model.Email;
             user.Idnumber = model.Idnumber;
@@ -174,6 +176,7 @@ namespace Devop.Controllers
             user.AddressLine1 = model.AddressLine1;
             user.AddressLine2 = model.AddressLine2;
             user.CityId = model.CityId;
+            user.PostalCode = model.PostalCode;
             user.SuburbId = model.SuburbId;
 
             PopulateCityDropDownList(model.CityId);
