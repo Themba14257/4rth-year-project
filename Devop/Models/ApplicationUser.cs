@@ -19,7 +19,7 @@ namespace Devop.Models
         [MaxLength(13)]
         [PersonalData]
         public string Idnumber { get; set; }
-        
+
         [PersonalData]
         [MaxLength(50)]
         public string FirstName { get; set; }
@@ -40,6 +40,9 @@ namespace Devop.Models
         [MaxLength(50)]
         public string CityId { get; set; }
 
+        [PersonalData]
+        [MaxLength(50)]
+        public string SuburbId { get; set; }
 
         [Display(Name = "Full Name")]
         public string FullName
@@ -78,6 +81,7 @@ namespace Devop.Models
         }
 
         public virtual City City { get; set; }
+        public virtual Suburb Suburb {get; set;}
 
     }
 }

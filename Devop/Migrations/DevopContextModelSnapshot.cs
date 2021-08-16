@@ -94,6 +94,10 @@ namespace Devop.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SuburbId")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -115,6 +119,8 @@ namespace Devop.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("SuburbId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -200,6 +206,10 @@ namespace Devop.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuburbId")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -346,7 +356,13 @@ namespace Devop.Migrations
                         .WithMany()
                         .HasForeignKey("CityId");
 
+                    b.HasOne("Devop.Models.Content.Suburb", "Suburb")
+                        .WithMany()
+                        .HasForeignKey("SuburbId");
+
                     b.Navigation("City");
+
+                    b.Navigation("Suburb");
                 });
 
             modelBuilder.Entity("Devop.Models.Content.City", b =>

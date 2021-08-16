@@ -21,8 +21,7 @@ namespace Devop.Controllers
         }
         public IActionResult Index()
         {
-            return View(_context.tblSuburb
-                .Include(c => c.City)
+            return View(_context.tblSuburb              
                 .AsNoTracking());
         }
         //[NoDirectAccess]
@@ -31,12 +30,10 @@ namespace Devop.Controllers
         {
             if (id == null)
             {
-                PopulateCityDropDownList();
                 return View(new Suburb());
             }
             else
-            {
-                PopulateCityDropDownList();
+            {       
                 var cities = await _context.tblCity.FindAsync(id);
                 if (cities == null)
                 {
@@ -101,19 +98,19 @@ namespace Devop.Controllers
 
         public async Task<IActionResult> Delete(string id)
         {
-            var cities = await _context.tblCity.FindAsync(id);
+            var cities = await _context.tblSuburb.FindAsync(id);
             try
             {
                 if (id != null)
                 {
-                    PopulateCityDropDownList(cities.CityId);
-                    _context.tblCity.Remove(cities);
-                    Notify(cities.CityName + " city was deleted permanently");
+                 //   PopulateCityDropDownList(cities.CityId);
+                    _context.tblSuburb.Remove(cities);
+                    Notify(cities.SuburbName + " city was deleted permanently");
                 }
             }
             catch (Exception)
             {
-                Notify(cities.CityName + " is in use could not be deleted!", notificationType: NotificationType.error);
+                Notify(cities.SuburbName + " is in use could not be deleted!", notificationType: NotificationType.error);
             }
             return RedirectToAction(nameof(Index));
         }
@@ -123,13 +120,6 @@ namespace Devop.Controllers
             return _context.tblSuburb.Any(e => e.SuburbId == id);
         }
 
-        private void PopulateCityDropDownList(object selectedCityName = null)
-        {
-            var CityQuery = from d in _context.tblCity.Distinct()
-                            orderby d.CityName
-                            select d;
-            ViewBag.suburbId = new SelectList(CityQuery.AsNoTracking(), "SurbubId", "SuburbName", selectedCityName);
-        }
-
+      
     }
 }

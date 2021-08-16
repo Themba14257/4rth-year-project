@@ -1,0 +1,50 @@
+﻿@model Devop.Models.Content.Suburb
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="text-info">@(Model.SuburbId!= null ? "Edit" : "Create") Suburb</h2>
+<hr class="my-4" />
+<div class="row">
+    <div class="col-lg-12">
+        <form asp-action="AddOrEdit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+            <input type="hidden" asp-for="SuburbId" />
+            <div class="pl-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="form-control-label" asp-for="SuburbName">District</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-location-arrow"></i></div>
+                                </div>
+                                <input asp-for="SuburbName" class="form-control" placeholder="District Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-icon-text btn-sm">
+                    <i class="mdi mdi-content-save-all btn-icon-prepend"></i>
+                    @(Model.SuburbId != null ? "Update" : "Create")
+                </button>
+                <a asp-action="Index" class="btn btn-secondary btn-icon-text btn-sm">
+                    <i class="mdi mdi-reload btn-icon-prepend"></i>
+                    Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="bg-primary m-1 p-1"><h4>City</h4></div>
+
 
 <p>
     <a asp-action="AddOrEdit">Add City</a>
@@ -23,19 +24,20 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Suburb.SuburbId)
-            </td>
-            <td>
-                <a asp-action="AddOrEdit" asp-route-id="@item.CityId">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suburb.SuburbId)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.CityId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

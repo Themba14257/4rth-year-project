@@ -15,7 +15,7 @@ namespace Devop.Models.ViewModel.UserViewModels
         [PersonalData]
         [DataType(DataType.Date)]
         public DateTime Dob { get; set; }
-        [MaxLength(13)]
+        [MaxLength(50)]
         [PersonalData]
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your email address")]
@@ -43,5 +43,9 @@ namespace Devop.Models.ViewModel.UserViewModels
         [PersonalData]
         [MaxLength(50)]
         public string CityId { get; set; }
+
+        [PersonalData]
+        [MaxLength(50)]
+        public string SuburbId { get; set; }
     }
 }

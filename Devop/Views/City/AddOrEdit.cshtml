@@ -10,6 +10,8 @@
 <hr class="my-4" />
 <div class="row">
     <div class="col-lg-12">
+        <div class="bg-primary m-1 p-1"><h4>City</h4></div>
+
         <form asp-action="AddOrEdit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
@@ -35,7 +37,7 @@
                                     <div class="input-group-text"><i class="fa fa-location-arrow"></i></div>
                                 </div>
                                 <select asp-for="SuburbId" class="form-control" asp-items="ViewBag.SuburbId">
-                                    <option value="" class="option">Select District</option>
+                                    <option value="" class="option">Select Suburb</option>
                                 </select>
                             </div>
                         </div>

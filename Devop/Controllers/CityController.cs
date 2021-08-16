@@ -28,7 +28,7 @@ namespace Devop.Controllers
         }
 
         [NoDirectAccess]
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> AddOrEdit(string id = null)
         {
             if(id == null)
@@ -81,7 +81,7 @@ namespace Devop.Controllers
                 {
                     try
                     {
-                        PopulateSuburbDropDownList(cities.SuburbId);
+                        PopulateSuburbDropDownList(cities.Suburb);
                         _context.Update(cities);
                         await _context.SaveChangesAsync();
                         Notify(cities.CityName + " city was updated successfully");
